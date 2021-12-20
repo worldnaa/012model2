@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		 xmlns="http://xmlns.jcp.org/xml/ns/javaee" 
+		 xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
+		 http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  
+  <servlet>
+  	<!-- ControlServlet.class 의 논리적 이름 정의 -->
+  	<servlet-name>controller</servlet-name>
+  	<servlet-class>spring.model2.control.ControlServlet</servlet-class>
+  	
+  	<!-- Servlet Life Cycle 이해 
+  		 :: 최초 Request 시 WAS Thread 발생 ==> init() / service() 호출
+  		 :: 이후 Request 시 WAS Thread 발생 ==> service() 호출           -->
+  	
+  	<!-- WAS 구동 시 Servlet loading (console창 확인) -->
+  	<load-on-startup>1</load-on-startup>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>controller</servlet-name>
+  	<url-pattern>*.do</url-pattern>
+  </servlet-mapping>  
+  
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+  
+</web-app>
