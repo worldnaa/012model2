@@ -120,13 +120,16 @@ public class ControlServlet extends HttpServlet {
 
 	// Client 의 요구사항 판단 ==> requestURI = "/~~.do" 형식이므로 아래와 같이 진행
 	private String getURI(String requestURI) {
-		// lastIndexOf("A") : A 문자 바로 전에 있는 것의 index 리턴
+		
+		// lastIndexOf('/') ==> 문자열에서 '/' 가 포함된 마지막 index 반환 (여러개일 경우 제일 마지막 인덱스 반환)
 		int start = requestURI.lastIndexOf('/')+1; 
 		int end = requestURI.lastIndexOf(".do");   
 		
 		System.out.println(":: getURI()의 start : " + start);
 		System.out.println(":: getURI()의 end : " + end);
 		
+		// substring(int beginIndex, int endIndex-1)
+		// beginIndex 부터 시작해서 endIndex-1 까지의 문자열 반환
 		String actionPage = requestURI.substring(start,end);
 		return actionPage;
 	}
